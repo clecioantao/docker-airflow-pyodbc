@@ -26,24 +26,6 @@ dag = DAG(
     tags=['etl'],
 )
 
-'''
-default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    # Exemplo: Inicia em 20 de Janeiro de 2021
-    'start_date': datetime(2021, 2, 20),
-    'email': ['clecio.antao@gmail.com'],
-    'email_on_failure': True,
-    'email_on_retry': False,
-    # Em caso de erros, tente rodar novamente apenas 1 vez
-    'retries': 1,
-    # Tente novamente após 30 segundos depois do erro
-    'retry_delay': timedelta(seconds=60),
-    # Execute uma vez a cada 10 minutos 
-    'schedule_interval': '*/10 * * * *'
-}
-'''
-
 def carrega_dados():
 
     import pandas as pd
@@ -57,7 +39,7 @@ def carrega_dados():
             
     # CRIA ENGINE DE ORIGEM - CONNECT SQL SERVER
     
-    engineorigem = sqlalchemy.create_engine('mssql+pyodbc://sa:Proteu690201@192.168.2.150/deskmanager?driver=ODBC+Driver+17+for+SQL+Server')
+    engineorigem = sqlalchemy.create_engine('mssql+pyodbc://clecio:Proteu690201@192.168.2.170/deskmanager?driver=ODBC+Driver+17+for+SQL+Server')
         
     # AUTENTICAÇÃO API
     url = "https://api.desk.ms/Login/autenticar"

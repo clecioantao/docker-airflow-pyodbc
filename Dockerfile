@@ -8,6 +8,7 @@ FROM puckel/docker-airflow:1.10.9
 LABEL maintainer="clecio"
 
 USER root
+
 RUN set -ex \
     && apt-get update -yqq \
     && apt-get install unixodbc-dev -yqq -yqq \
